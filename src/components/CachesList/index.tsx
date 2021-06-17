@@ -1,9 +1,10 @@
 import React, { useState, useEffect} from 'react'
-import { ScrollView, View, Text } from 'react-native'
+import { ScrollView, View, Text, TouchableOpacity } from 'react-native'
 import axios from 'axios'
 
 import {API_URL, API_CONSUMER_KEY} from '@env'
 import Cache from './Cache'
+// import { TouchableOpacity } from 'react-native-gesture-handler'
 
 
 interface CacheInfo{
@@ -13,7 +14,7 @@ interface CacheInfo{
   }
 
 
-const CachesList = () => {
+const CachesList = ({ navigation }) => {
     const [isLoading, setLoading] = useState(true);
     const [caches, setCaches] = useState<{[cacheCode: string]: CacheInfo}>({});
   
@@ -46,8 +47,13 @@ const CachesList = () => {
           {isLoading
             ? <Text>Loading...</Text>
             : Object.entries(caches).map(([key, value]) => (
-                <Cache key={key} name={value.name} location={value.location} type={value.type} />
-              ))}
+                <TouchableOpacity key={key} onPress={() => navigation.navigate('Details', {
+                  cacheCode: key
+                })}>
+                  <Cache name={value.name} location={value.location} type={value.type} />
+                </TouchableOpacity>
+              ))
+          }
         </View>
       </ScrollView>
     );

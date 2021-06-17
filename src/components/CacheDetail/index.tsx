@@ -12,7 +12,9 @@ interface Cache {
   type: string;
 }
 
-const CacheDetail = () => {
+const CacheDetail = ({route}) => {
+  const {cacheCode} = route.params;
+
   const [isLoading, setLoading] = useState(true);
   const [cache, setCache] = useState<Cache>({
     code: '',
@@ -26,7 +28,7 @@ const CacheDetail = () => {
     axios
       .get(`${API_URL}/services/caches/geocache`, {
         params: {
-          cache_code: 'OP0AE1',
+          cache_code: cacheCode,
           consumer_key: API_CONSUMER_KEY,
         },
       })
