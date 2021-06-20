@@ -4,7 +4,6 @@ import axios from 'axios'
 
 import {API_URL, API_CONSUMER_KEY} from '@env'
 import Cache from './Cache'
-// import { TouchableOpacity } from 'react-native-gesture-handler'
 
 
 interface CacheInfo{
@@ -13,10 +12,15 @@ interface CacheInfo{
     type: string;
   }
 
+  type Props = {
+    navigation: any;
+    route: any;
+  }
 
-const CachesList = ({ navigation }) => {
+const CachesList: React.FC<Props> = ({ navigation, route }) => {
     const [isLoading, setLoading] = useState(true);
     const [caches, setCaches] = useState<{[cacheCode: string]: CacheInfo}>({});
+    const {radius} = route.params;
   
 
     useEffect(() => {
@@ -26,7 +30,7 @@ const CachesList = ({ navigation }) => {
           {
             params: {
               search_method: 'services/caches/search/nearest',
-              search_params: {center: '49|19', radius: 30},
+              search_params: {center: '49|19', radius: radius},
               retr_method: 'services/caches/geocaches',
               retr_params: {fields: 'name|location|type'},
               wrap: true,

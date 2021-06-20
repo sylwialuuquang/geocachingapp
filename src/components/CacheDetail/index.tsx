@@ -1,7 +1,6 @@
 import React, {useState, useEffect} from 'react';
 import {View, Text} from 'react-native';
 import axios from 'axios';
-
 import {API_URL, API_CONSUMER_KEY} from '@env';
 
 interface Cache {
@@ -12,7 +11,11 @@ interface Cache {
   type: string;
 }
 
-const CacheDetail = ({route}) => {
+type Props = {
+  route: any;
+};
+
+const CacheDetail: React.FC<Props> = ({route}) => {
   const {cacheCode} = route.params;
 
   const [isLoading, setLoading] = useState(true);
@@ -41,9 +44,13 @@ const CacheDetail = ({route}) => {
 
   return (
     <View>
-      <Text>
-        {cache.name} - {cache.location} - {cache.status} - {cache.type}
-      </Text>
+      {isLoading ? (
+        <Text>Loading...</Text>
+      ) : (
+        <Text>
+          {cache.name} - {cache.location} - {cache.status} - {cache.type}
+        </Text>
+      )}
     </View>
   );
 };
