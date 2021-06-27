@@ -1,7 +1,10 @@
 import React, {useState, useEffect} from 'react';
+import {RouteProp} from '@react-navigation/native';
 import {View, Text} from 'react-native';
 import axios from 'axios';
 import {API_URL, API_CONSUMER_KEY} from '@env';
+
+import {RootStackParamList} from '../../types';
 
 interface Cache {
   code: string;
@@ -11,9 +14,12 @@ interface Cache {
   type: string;
 }
 
+type CacheDetailScreenRouteProp = RouteProp<RootStackParamList, 'Details'>
+
 type Props = {
-  route: any;
+  route: CacheDetailScreenRouteProp;
 };
+
 
 const CacheDetail: React.FC<Props> = ({route}) => {
   const {cacheCode} = route.params;

@@ -6,9 +6,10 @@ import { createStackNavigator } from '@react-navigation/stack';
 import Caches from './src/components/CachesList';
 import CacheDetail from './src/components/CacheDetail';
 import RadiusInput from './src/components/RadiusInput';
+import { RootStackParamList } from './src/types'
 
 
-const Stack = createStackNavigator();
+const Stack = createStackNavigator<RootStackParamList>();
 
 const App = () => {
   return (
