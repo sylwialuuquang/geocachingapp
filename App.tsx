@@ -6,6 +6,7 @@ import { createStackNavigator } from '@react-navigation/stack';
 import Caches from './src/components/CachesList';
 import CacheDetail from './src/components/CacheDetail';
 import RadiusInput from './src/components/RadiusInput';
+import CachesInRange from './src/screens/CachesInRange'
 import { RootStackParamList } from './src/types'
 
 
@@ -16,7 +17,7 @@ const App = () => {
     <NavigationContainer>
       <Stack.Navigator initialRouteName="Radius">
         <Stack.Screen name="Radius" component={RadiusInput} />
-        <Stack.Screen name="Caches" component={Caches} />
+        <Stack.Screen name="Caches" component={CachesInRange} />
         <Stack.Screen name="Details" component={CacheDetail} />
       </Stack.Navigator>
     </NavigationContainer>

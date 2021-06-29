@@ -1,12 +1,11 @@
 import React, {useState, useEffect} from 'react';
-import {StackNavigationProp} from '@react-navigation/stack';
-import {RouteProp} from '@react-navigation/native';
 import {ScrollView, View, Text, TouchableOpacity} from 'react-native';
 import axios from 'axios';
 
 import {API_URL, API_CONSUMER_KEY} from '@env';
 import Cache from './Cache';
-import {RootStackParamList} from '../../types';
+import {CachesScreenNavigationProp, Coords} from '../../types';
+
 
 interface CacheInfo {
   name: string;
@@ -14,29 +13,23 @@ interface CacheInfo {
   type: string;
 }
 
-type CachesScreenNavigationProp = StackNavigationProp<
-  RootStackParamList,
-  'Caches'
->;
-
-type CachesScreenRouteProp = RouteProp<RootStackParamList, 'Caches'>;
-
 type Props = {
   navigation: CachesScreenNavigationProp;
-  route: CachesScreenRouteProp;
+  radius: number;
+  coords: Coords;
 };
 
-const CachesList: React.FC<Props> = ({navigation, route}) => {
+
+const CachesList: React.FC<Props> = ({navigation, radius, coords}) => {
   const [isLoading, setLoading] = useState(true);
   const [caches, setCaches] = useState<{[cacheCode: string]: CacheInfo}>({});
-  const {radius} = route.params;
 
   useEffect(() => {
     axios
       .get(`${API_URL}/services/caches/shortcuts/search_and_retrieve`, {
         params: {
           search_method: 'services/caches/search/nearest',
-          search_params: {center: '49|19', radius: radius},
+          search_params: {center: `${coords.latitude}|${coords.longitude}`, radius: radius},
           retr_method: 'services/caches/geocaches',
           retr_params: {fields: 'name|location|type'},
           wrap: true,
