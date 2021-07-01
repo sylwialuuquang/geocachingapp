@@ -6,7 +6,7 @@ import { createStackNavigator } from '@react-navigation/stack';
 import CacheDetail from './src/components/CacheDetail';
 import RadiusInput from './src/components/RadiusInput';
 import CachesInRange from './src/screens/CachesInRange'
-import SunriseAndSunset from './src/screens/SunriseAndSunset';
+import SunriseAndSunsetScreen from './src/screens/SunriseAndSunset';
 import { RootStackParamList } from './src/types'
 
 
@@ -19,7 +19,7 @@ const App = () => {
         <Stack.Screen name="Radius" component={RadiusInput} />
         <Stack.Screen name="Caches" component={CachesInRange} />
         <Stack.Screen name="Details" component={CacheDetail} />
-        <Stack.Screen name="Sun" component={SunriseAndSunset} />
+        <Stack.Screen name="Sun" component={SunriseAndSunsetScreen} />
       </Stack.Navigator>
     </NavigationContainer>
   );

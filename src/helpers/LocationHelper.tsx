@@ -1,4 +1,4 @@
-import { Platform} from 'react-native'
+import {View, Text, Platform} from 'react-native'
 import Geolocation from 'react-native-geolocation-service';
 import {PERMISSIONS, check, RESULTS, request} from 'react-native-permissions';
 
