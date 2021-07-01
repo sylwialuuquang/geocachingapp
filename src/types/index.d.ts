@@ -13,4 +13,12 @@ export type RootStackParamList = {
   Radius: undefined;
   Caches: { radius: string };
   Details: { cacheCode: string };
+  Sun: undefined;
+}
+
+export type SunInfo = {
+  id: number;
+  date: string;
+  sunrise: string;
+  sunset: string;
 }
