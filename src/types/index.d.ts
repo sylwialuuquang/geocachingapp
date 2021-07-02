@@ -10,6 +10,7 @@ RootStackParamList,
 export type Coords = Geolocation.GeoCoordinates;
 
 export type RootStackParamList = {
+  Home: undefined;
   Radius: undefined;
   Caches: { radius: string };
   Details: { cacheCode: string };

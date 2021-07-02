@@ -5,7 +5,7 @@ import Geolocation from 'react-native-geolocation-service';
 import { LocationHelper } from '../../helpers/LocationHelper';
 import SunriseAndSunsetList from '../../components/SunriseAndSunsetList'
 
-const SunriseAndSunsetScreen: React.FC = () => {
+const SunriseAndSunset: React.FC = () => {
     const [locationResponse, setLocationResponse] = useState<null | Geolocation.GeoPosition>(null)
     
     useEffect(() => LocationHelper(setLocationResponse), [setLocationResponse])
@@ -18,4 +18,4 @@ const SunriseAndSunsetScreen: React.FC = () => {
     )
 }
 
-export default SunriseAndSunsetScreen;
+export default SunriseAndSunset;
