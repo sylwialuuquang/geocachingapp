@@ -5,7 +5,6 @@ import Geolocation from 'react-native-geolocation-service';
 
 import CachesList from '../../components/CachesList';
 import LocationService from '../../services/LocationService';
-import {LocationHelper} from '../../helpers/LocationHelper';
 import {RootStackParamList, CachesScreenNavigationProp} from '../../types';
 import {Screens} from '../../navigation/screen';
 
