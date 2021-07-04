@@ -19,7 +19,7 @@ export type RootStackParamList = {
   SUN: undefined;
 }
 
-export type SunInfo = {
+export class SunInfo {
   id: number;
   date: string;
   sunrise: string;

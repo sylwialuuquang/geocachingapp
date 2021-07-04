@@ -1,6 +1,7 @@
 import React, {useState, useEffect} from 'react';
 import {ScrollView} from 'react-native';
 import SunCalc from 'suncalc';
+import {DateTime} from 'luxon';
 
 import {Coords, SunInfo} from '../../types';
 import SunriseAndSunsetItem from './SunriseAndSunsetItem';
@@ -13,29 +14,33 @@ const SunriseAndSunsetList: React.FC<Props> = ({coords}) => {
   const [sunInfo, setSunInfo] = useState<SunInfo[]>([]);
 
   useEffect(() => {
-    let sunInfoArray: SunInfo[] = [];
-    const today = new Date();
-    for (let i = 0; i < 10; i++) {
-      const date = new Date(today.getTime() + i * 24 * 60 * 60 * 1000);
-      const times = SunCalc.getTimes(date, coords.latitude, coords.longitude);
-      const sunriseStr =
-        times.sunrise.getHours() + ':' + times.sunrise.getMinutes();
-      const sunsetStr =
-        times.sunset.getHours() + ':' + times.sunset.getMinutes();
-      sunInfoArray.push({
-        id: i+1,
-        date: date.toLocaleDateString(),
-        sunrise: sunriseStr,
-        sunset: sunsetStr,
-      });
-    }
-    setSunInfo(sunInfoArray);
+    const dt = DateTime.local();
+
+    setSunInfo(
+      Array.from(Array(10).keys()).map(num => {
+        const date = dt.plus({hours: num * 24});
+
+        const times = SunCalc.getTimes(
+          date.toJSDate(),
+          coords.latitude,
+          coords.longitude,
+        );
+        const sunrise = DateTime.fromJSDate(times.sunrise).toFormat('HH:mm');
+        const sunset = DateTime.fromJSDate(times.sunset).toFormat('HH:mm');
+        return {
+          id: num,
+          date: date.toFormat('dd LLL'),
+          sunrise: sunrise,
+          sunset: sunset,
+        };
+      }),
+    );
   }, []);
 
   return (
     <ScrollView>
       {sunInfo.map(day => (
-        <SunriseAndSunsetItem sunInfo={day} key={day.id} />
+        <SunriseAndSunsetItem {...day} key={day.id} />
       ))}
     </ScrollView>
   );

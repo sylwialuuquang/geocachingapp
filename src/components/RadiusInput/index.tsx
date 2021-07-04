@@ -32,16 +32,18 @@ const RadiusInput: React.FC<Props> = ({navigation}) => {
       radius: data.radius,
     });
 
+  const radiusRules = {
+    required: true,
+    pattern: {value: /[\d]/g, message: 'Digits only'},
+  };
+
   return (
     <View>
       <Controller
         name="radius"
         defaultValue=""
         control={control}
-        rules={{
-          required: true,
-          pattern: {value: /[\d]/g, message: 'Digits only'},
-        }}
+        rules={radiusRules}
         render={({field: {onChange, onBlur, value}}) => (
           <TextInput
             onBlur={onBlur}
