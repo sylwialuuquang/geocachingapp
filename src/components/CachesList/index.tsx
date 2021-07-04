@@ -5,7 +5,7 @@ import axios from 'axios';
 import {API_URL, API_CONSUMER_KEY} from '@env';
 import Cache from './Cache';
 import {CachesScreenNavigationProp, Coords} from '../../types';
-
+import {Screens} from '../../navigation/screen'
 
 interface CacheInfo {
   name: string;
@@ -53,7 +53,7 @@ const CachesList: React.FC<Props> = ({navigation, radius, coords}) => {
             <TouchableOpacity
               key={key}
               onPress={() =>
-                navigation.navigate('Details', {
+                navigation.navigate(Screens.DETAILS, {
                   cacheCode: key,
                 })
               }>

@@ -5,7 +5,7 @@ import {useForm, Controller} from 'react-hook-form';
 import {TextInput, Button} from 'react-native-paper';
 
 import {RootStackParamList} from '../../types';
-
+import {Screens} from '../../navigation/screen';
 
 type FormData = {
   radius: string;
@@ -13,12 +13,12 @@ type FormData = {
 
 type RadiusScreenNavigationProp = StackNavigationProp<
   RootStackParamList,
-  'Radius'
+  Screens.RADIUS
 >;
 
 type Props = {
-    navigation: RadiusScreenNavigationProp;
-  };
+  navigation: RadiusScreenNavigationProp;
+};
 
 const RadiusInput: React.FC<Props> = ({navigation}) => {
   const {
@@ -28,10 +28,9 @@ const RadiusInput: React.FC<Props> = ({navigation}) => {
   } = useForm<FormData>();
 
   const onSubmit = (data: FormData) =>
-    navigation.navigate('Caches', {
+    navigation.navigate(Screens.CACHES, {
       radius: data.radius,
     });
-
 
   return (
     <View>

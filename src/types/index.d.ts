@@ -1,20 +1,22 @@
 import {StackNavigationProp} from '@react-navigation/stack';
 import Geolocation from 'react-native-geolocation-service'
 
+import { Screens } from '../navigation/screen';
+
 
 export type CachesScreenNavigationProp = StackNavigationProp<
 RootStackParamList,
-'Caches'
+Screens.CACHES
 >;
 
 export type Coords = Geolocation.GeoCoordinates;
 
 export type RootStackParamList = {
-  Home: undefined;
-  Radius: undefined;
-  Caches: { radius: string };
-  Details: { cacheCode: string };
-  Sun: undefined;
+  HOME: undefined;
+  RADIUS: undefined;
+  CACHES: { radius: string };
+  DETAILS: { cacheCode: string };
+  SUN: undefined;
 }
 
 export type SunInfo = {

@@ -5,8 +5,9 @@ import {StackNavigationProp} from '@react-navigation/stack';
 import {Button} from 'react-native-paper';
 
 import {RootStackParamList} from '../../types';
+import {Screens} from '../../navigation/screen'
 
-type HomeScreenNavigationProp = StackNavigationProp<RootStackParamList, 'Home'>;
+type HomeScreenNavigationProp = StackNavigationProp<RootStackParamList, Screens.HOME>;
 
 type Props = {
   navigation: HomeScreenNavigationProp;
@@ -22,7 +23,7 @@ const Home: React.FC<Props> = ({navigation}) => {
       <Button
         mode="contained"
         onPress={() => {
-          navigation.navigate('Radius');
+          navigation.navigate(Screens.RADIUS);
         }}>
         Search for caches!
       </Button>
@@ -30,7 +31,7 @@ const Home: React.FC<Props> = ({navigation}) => {
       <Button
         mode="contained"
         onPress={() => {
-          navigation.navigate('Sun');
+          navigation.navigate(Screens.SUN);
         }}>
         Sunrise and sunset
       </Button>

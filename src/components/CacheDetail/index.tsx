@@ -5,6 +5,7 @@ import axios from 'axios';
 import {API_URL, API_CONSUMER_KEY} from '@env';
 
 import {RootStackParamList} from '../../types';
+import {Screens} from '../../navigation/screen';
 
 interface Cache {
   code: string;
@@ -14,12 +15,14 @@ interface Cache {
   type: string;
 }
 
-type CacheDetailScreenRouteProp = RouteProp<RootStackParamList, 'Details'>
+type CacheDetailScreenRouteProp = RouteProp<
+  RootStackParamList,
+  Screens.DETAILS
+>;
 
 type Props = {
   route: CacheDetailScreenRouteProp;
 };
-
 
 const CacheDetail: React.FC<Props> = ({route}) => {
   const {cacheCode} = route.params;
