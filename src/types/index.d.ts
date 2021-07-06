@@ -9,6 +9,11 @@ RootStackParamList,
 Screens.CACHES
 >;
 
+export type HomeScreenNavigationProp = StackNavigationProp<
+  RootStackParamList,
+  Screens.HOME
+>;
+
 export type Coords = Geolocation.GeoCoordinates;
 
 export type RootStackParamList = {

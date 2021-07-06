@@ -1,16 +1,11 @@
 import React, {useEffect, useCallback} from 'react';
-import {View, Text} from 'react-native';
+import {View, StyleSheet} from 'react-native';
 import SplashScreen from 'react-native-splash-screen';
-import {StackNavigationProp} from '@react-navigation/stack';
-import {Button} from 'react-native-paper';
 
-import {RootStackParamList} from '../../types';
+import BrownButton from '../../components/BrownButton';
+import {HomeScreenNavigationProp} from '../../types';
 import {Screens} from '../../navigation/screen';
-
-type HomeScreenNavigationProp = StackNavigationProp<
-  RootStackParamList,
-  Screens.HOME
->;
+import SunriseButton from '../../components/SunriseButton';
 
 type Props = {
   navigation: HomeScreenNavigationProp;
@@ -30,16 +25,45 @@ const Home: React.FC<Props> = ({navigation}) => {
   }, []);
 
   return (
-    <View>
-      <Button mode="contained" onPress={goToRadiusScreen}>
-        Search for caches!
-      </Button>
-      <Text></Text>
-      <Button mode="contained" onPress={goToSunScreen}>
-        Sunrise and sunset
-      </Button>
+    <View style={styles.container}>
+      <View style={styles.searchBtnContainer}>
+        <BrownButton
+          text="Seach for caches!"
+          icon="map-search-outline"
+          mode="contained"
+          onPress={goToRadiusScreen}
+          style={styles.searchBtn}
+        />
+      </View>
+      <View style={styles.footerContainer}>
+        <SunriseButton style={styles.sunriseBtn} navigation={navigation} />
+      </View>
     </View>
   );
 };
+
+const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+    padding: 20,
+  },
+  searchBtnContainer: {
+    flex: 1,
+    justifyContent: 'center',
+    alignSelf: 'center'
+  },
+  searchBtn: {
+    height: 75, width: 250, justifyContent: 'center',
+  },
+  footerContainer: {
+    flex: 1,
+    justifyContent: 'flex-end',
+  },
+  sunriseBtn: {
+    width: 70,
+    height: 70,
+    alignSelf: 'flex-end',
+  },
+});
 
 export default Home;
