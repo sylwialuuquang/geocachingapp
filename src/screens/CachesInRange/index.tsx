@@ -3,10 +3,11 @@ import {View, Text} from 'react-native';
 import {RouteProp} from '@react-navigation/native';
 import Geolocation from 'react-native-geolocation-service';
 
-import CachesList from '../../components/CachesList';
 import LocationService from '../../services/LocationService';
 import {RootStackParamList, CachesScreenNavigationProp} from '../../types';
 import {Screens} from '../../navigation/screen';
+
+import CacheList from '../../components/CacheList'
 
 type LocationData = Geolocation.GeoPosition;
 
@@ -33,11 +34,10 @@ const CachesInRange: React.FC<Props> = ({navigation, route}) => {
       {locationResponse === null ? (
         <Text>Loading caches in range...</Text>
       ) : (
-        <CachesList
+        <CacheList 
           navigation={navigation}
           radius={+radius}
-          coords={locationResponse.coords}
-        />
+          coords={locationResponse.coords}/>
       )}
     </View>
   );
