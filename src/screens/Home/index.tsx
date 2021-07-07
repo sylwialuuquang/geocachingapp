@@ -2,7 +2,7 @@ import React, {useEffect, useCallback} from 'react';
 import {View, StyleSheet} from 'react-native';
 import SplashScreen from 'react-native-splash-screen';
 
-import BrownButton from '../../components/BrownButton';
+import SubmitButton from '../../components/SubmitButton';
 import {HomeScreenNavigationProp} from '../../types';
 import {Screens} from '../../navigation/screen';
 import SunriseButton from '../../components/SunriseButton';
@@ -20,14 +20,10 @@ const Home: React.FC<Props> = ({navigation}) => {
     navigation.navigate(Screens.RADIUS);
   }, []);
 
-  const goToSunScreen = useCallback(() => {
-    navigation.navigate(Screens.SUN);
-  }, []);
-
   return (
     <View style={styles.container}>
       <View style={styles.searchBtnContainer}>
-        <BrownButton
+        <SubmitButton
           text="Seach for caches!"
           icon="map-search-outline"
           mode="contained"
@@ -50,10 +46,12 @@ const styles = StyleSheet.create({
   searchBtnContainer: {
     flex: 1,
     justifyContent: 'center',
-    alignSelf: 'center'
+    alignSelf: 'center',
   },
   searchBtn: {
-    height: 75, width: 250, justifyContent: 'center',
+    height: 75,
+    width: 250,
+    justifyContent: 'center',
   },
   footerContainer: {
     flex: 1,

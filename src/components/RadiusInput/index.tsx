@@ -6,6 +6,7 @@ import {TextInput, Button} from 'react-native-paper';
 
 import {RootStackParamList} from '../../types';
 import {Screens} from '../../navigation/screen';
+import SubmitButton from '../SubmitButton';
 
 type FormData = {
   radius: string;
@@ -46,6 +47,7 @@ const RadiusInput: React.FC<Props> = ({navigation}) => {
         rules={radiusRules}
         render={({field: {onChange, onBlur, value}}) => (
           <TextInput
+            label="Radius"
             onBlur={onBlur}
             onChangeText={value => onChange(value)}
             value={value}
@@ -53,9 +55,13 @@ const RadiusInput: React.FC<Props> = ({navigation}) => {
         )}
       />
       {errors.radius && <Text>{errors.radius.message}</Text>}
-      <Button mode="contained" onPress={handleSubmit(onSubmit)}>
-        find caches
-      </Button>
+      <Text></Text>
+      <SubmitButton
+        text="Find caches"
+        icon="magnify"
+        mode="contained"
+        onPress={handleSubmit(onSubmit)}
+      />
     </View>
   );
 };

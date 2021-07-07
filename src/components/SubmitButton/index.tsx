@@ -14,7 +14,7 @@ type Props = {
     justifyContent?: 'center' | 'flex-end' | 'flex-start' | 'space-around' | 'space-between' | 'space-evenly'
   }
 };
-const BrownButton: React.FC<Props> = ({text, icon, onPress, mode, style}) => {
+const SubmitButton: React.FC<Props> = ({text, icon, onPress, mode, style}) => {
   return (
     <Button
       icon={icon}
@@ -22,10 +22,11 @@ const BrownButton: React.FC<Props> = ({text, icon, onPress, mode, style}) => {
       mode={mode}
       onPress={onPress}
       labelStyle={{fontFamily: 'Montserrat-SemiBold', color: colors.white}}
-      style={style}>
+      contentStyle={style}
+      >
       {text}
     </Button>
   );
 };
 
-export default BrownButton;
+export default SubmitButton;
