@@ -1,5 +1,7 @@
 import React from 'react';
 import {View, Text} from 'react-native';
+import {List, Divider} from 'react-native-paper';
+
 import {SunInfo} from '../../../types';
 
 const SunriseAndSunsetItem: React.FC<SunInfo> = ({
@@ -10,12 +12,12 @@ const SunriseAndSunsetItem: React.FC<SunInfo> = ({
 }) => {
   return (
     <View>
-      <Text>
-        Day {id}: {date}
-      </Text>
-      <Text>Sunrise: {sunrise}</Text>
-      <Text>Sunset:{sunset}</Text>
-      <Text>------------</Text>
+      <List.Item
+        title={date}
+        description={`Sunrise: ${sunrise}, Sunset: ${sunset}`}
+        left={props => <List.Icon {...props} icon="white-balance-sunny" />}
+      />
+      <Divider />
     </View>
   );
 };

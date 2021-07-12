@@ -46,7 +46,6 @@ const CachesInRange: React.FC<Props> = ({navigation, route}) => {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    paddingVertical: 20
   }
 })
 
